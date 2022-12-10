@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Mascota {
@@ -17,6 +18,7 @@ public class Mascota {
     private String atencion_especial;
     private String observaciones;
     
+    @OneToOne
     private Duenio unDuenio; // estableciendo la relacion 1 a 1
 
     public Mascota() {
