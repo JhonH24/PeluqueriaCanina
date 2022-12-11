@@ -1,7 +1,12 @@
 package com.mycompany.peluqueriacanina.igu;
 
+import com.mycompany.peluqueriacanina.logica.Controladora;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+
 public class CargaDatos extends javax.swing.JFrame {
 
+    Controladora control = new Controladora(); // instaciamos Controladora
 
     public CargaDatos() {
         initComponents();
@@ -75,6 +80,11 @@ public class CargaDatos extends javax.swing.JFrame {
         });
 
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         jLabel10.setText("Carga de Datos");
@@ -220,6 +230,28 @@ public class CargaDatos extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        
+        // Creamos variables Auxiliares
+        String nombreMasco = txtNombre.getText(); //Aca obtenemos los datos
+        String raza = txtRaza.getText();
+        String color = txtColor.getText();
+        String Observaciones = txtObservaciones.getText();
+        String alergico = (String) cmbAlergico.getSelectedItem();
+        String atenEsp = (String) cmbAtEsp.getSelectedItem();
+        String nombreDuenio = txtNomDuenio.getText();
+        String celDuenio = txtCelDuenio.getText();
+        
+        control.guardar(nombreMasco, raza, color, Observaciones, alergico,
+                atenEsp, nombreDuenio, celDuenio); //Aca pasamos los valores de las variables Auxiliares
+        
+        
+        JOptionPane optionPane = new JOptionPane("Guardado con Exito");
+        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        JDialog dialog = optionPane.createDialog("Guardado Exitoso");
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
